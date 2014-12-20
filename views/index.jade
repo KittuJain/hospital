@@ -1,0 +1,13 @@
+extends layout
+
+block content
+ .titleBar
+   h1 #{title}
+  .mainImage
+   img(src='./images/hospitalImage.jpg' height="100%" width="100%")
+  .selector
+   a(href='/patients') 
+    button Patients
+  .selector
+   a(href='/doctors')
+    button Doctors

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+ h1 LogIn your account
+ form(action="/login" method="POST")
+   span 
+    |Email:
+    input(type="email" name="email" required)
+   br
+   span 
+    |Password:
+    input(type="password" name="password" required)
+   br
+   br
+   input(type="submit" value="LogIn")

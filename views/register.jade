@@ -1,0 +1,31 @@
+extends layout
+
+block content
+ h1 Register your account
+ form(action="/register" method="POST")
+   span 
+    |Name:
+    input(type="text" name="name" required)
+   br
+   span 
+    |Email:
+    input(type="email" name="email" required)
+   br
+   span 
+    |Password:
+    input(type="password" name="password" required)
+   br
+   span 
+    |Address:
+    input(type="text" name="address" required)
+   br
+   span 
+    |Phone Number:
+    input(type="number" name="phone" required)
+   br
+   span 
+    |Specialist:
+    input(type="text" name="specialist" required)
+   br
+   br
+   input(type="submit" value="Register")
