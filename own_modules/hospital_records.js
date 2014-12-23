@@ -4,6 +4,30 @@ var _getpatients = function(db,onComplete){
 	var patientsName = "select name from patients";
 	db.all(patientsName,onComplete);
 };
+
+var _getDoctorEmailAndPassword = function(db,onComplete){
+	var select_query = 'select id,email,password from doctors';
+	db.all(select_query,function(err,doctors){
+		onComplete(null,doctors);
+	});
+};
+
+var _addNewDoctor = function(doctor,db,onComplete){
+	var insertDoctor = 'insert into doctors(name,specialist,password,email,phone,Address) values'+
+	' ("'+doctor.name+'","'+doctor.specialist+'","'+doctor.password+'","'+doctor.email+'","'+doctor.phone+'","'+
+		doctor.address+'")';
+	db.run(insertDoctor, function(err){
+		err && console.log(err);
+		onComplete(err);
+	});
+};
+
+var _getNewDoctor = function(db,onComplete){
+	var get_doctor_query = 'select * from doctors order by id desc';
+	db.get(get_doctor_query,onComplete);
+};
+
+
 exports.init = function(location){
 	var operate = function(operation){
 		return function(){
@@ -21,6 +45,9 @@ exports.init = function(location){
 	};
 	var records = {
 		getPatients:operate(_getpatients),
+		getDoctorEmailAndPassword:operate(_getDoctorEmailAndPassword),
+		addNewDoctor:operate(_addNewDoctor),
+		getNewDoctor:operate(_getNewDoctor)
 	};
 	return records;
 };
