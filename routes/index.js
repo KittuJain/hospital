@@ -45,4 +45,8 @@ router.get('/dashboard/:id',function(req,res){
 	res.render('dashboard');
 });
 
+router.get('/emergencyServices',function(req,res){
+  res.render('emergency_services');
+});
+
 module.exports = router;
